@@ -3,8 +3,13 @@ Main orchestration script for queue digital twin simulation.
 Runs plant and twin in parallel and generates reports.
 """
 
-import os
 from pathlib import Path
+import sys
+
+# Ensure root directory is in path for config import
+root_dir = Path(__file__).parent.parent
+sys.path.insert(0, str(root_dir))
+
 import numpy as np
 import simpy
 import config
@@ -187,5 +192,10 @@ def run_batch_simulation(num_seeds: int = config.NUM_SEEDS):
     print(f"{'=' * 50}")
 
 
-if __name__ == "__main__":
+def main():
+    """Entry point for the simulation."""
     run_batch_simulation(num_seeds=config.NUM_SEEDS)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,17 +1,30 @@
 # Quick Start Guide
 
-## 1. Install Dependencies
+## 1. Install the Package
 
 ```bash
 # Navigate to project directory
 cd queue-digital-twin
 
-# Install all required packages
-pip install -r requirements.txt
+# Install in editable mode (includes all dependencies)
+pip install -e .
 ```
+
+This installs the package in editable mode, so any changes you make are immediately reflected without reinstalling.
 
 ## 2. Run the Full Simulation (10 independent runs)
 
+**Option A: Using the command line entry point (recommended)**
+```bash
+run-simulation
+```
+
+**Option B: Using Python directly**
+```bash
+python -m scripts.run_simulation
+```
+
+**Option C: From the project root**
 ```bash
 python scripts/run_simulation.py
 ```
@@ -123,11 +136,11 @@ if report['convergence']['converged']:
 ## 8. Troubleshooting
 
 **"ModuleNotFoundError: No module named simpy"**
-- Run: `pip install -r requirements.txt`
+- Run: `pip install -e .` in the project root
 
-**"Outputs folder exists but no files generated"**
-- Check that simulation actually ran (should print progress)
-- Verify `config.SIM_DURATION > 0`
+**"run-simulation not found"**
+- Make sure you ran `pip install -e .`
+- Try using `python -m scripts.run_simulation` instead
 
 **Plots look empty**
 - This can happen if not enough events occurred
